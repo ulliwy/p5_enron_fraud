@@ -42,7 +42,6 @@ with open("final_project_dataset.pkl", "r") as data_file:
 
 
 ### Task 2: Remove outliers
-
 del(data_dict['TOTAL'])
 del(data_dict['THE TRAVEL AGENCY IN THE PARK'])
 
@@ -74,7 +73,6 @@ for k in missing_values_ratio.keys():
 print '--------------------------------------'
 
 ### Task 3: Create new feature(s)
-### Store to my_dataset for easy export below.
 my_dataset = data_dict
 
 for i in data_dict.keys():
@@ -89,10 +87,6 @@ for i in data_dict.keys():
     else:
         my_dataset[i]['from_messages_ratio'] = \
             round(float(data_dict[i]['from_this_person_to_poi']) / float(data_dict[i]['from_messages']), 3)
-
-#print data_dict
-#for i in data_dict.keys():
-#    print data_dict[i]['to_messages_ratio'], data_dict[i]['from_messages_ratio']
 
 
 ### Extract features and labels from dataset for local testing
