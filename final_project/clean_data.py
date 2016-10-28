@@ -1,3 +1,8 @@
+import sys
+from matplotlib import pyplot as plt
+sys.path.append("../tools/")
+from feature_format import featureFormat, targetFeatureSplit
+
 def clean_data(data_dict, feature):
     for each in data_dict:
         for ft in data_dict[each].keys():
@@ -19,6 +24,20 @@ def find_missing_values_ratio(data_dict):
                 k += 1
         ratio[features[i]] = round(k / float(len(data_dict)), 4)
     return ratio
+
+
+def draw_scatter(data_dict, xy, desc):
+    data = featureFormat(data_dict, xy)
+    plt.figure()
+    for point in data:
+        salary = point[0]
+        bonus = point[1]
+        plt.scatter(salary, bonus, alpha=0.5)
+
+    plt.title('Salary vs. Bonus')
+    plt.xlabel('Salary')
+    plt.ylabel('Bonus')
+    plt.savefig(desc)
 
 
 
